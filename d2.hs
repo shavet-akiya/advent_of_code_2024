@@ -11,7 +11,9 @@ findSafe xs
 diffFinder :: [Int] -> [Int]
 diffFinder [] = []
 diffFinder [n] = [n]
-diffFinder (n1 : n2 : ns) = (n1 - n2) : (diffFinder (n2 : ns))
+diffFinder (n1 : n2 : ns)
+ | abs (n1 - n2) <= 3 && n1 /= n2 =  (n1 - n2) : (diffFinder (n2 : ns))
+ | otherwise = []
 
 main :: IO ()
 main = do
@@ -20,10 +22,11 @@ main = do
   let goodRows = fmap (fmap read . words) allLines
   let l1 = fmap diffFinder goodRows
   let l2 = fmap findSafe l1
-  --print l1
-  --print l2
-  --print "-----"
+  print l1
+  print l2
+  print "-----"
   let finalSafe = mapMaybe (findSafe . diffFinder) goodRows
+  print finalSafe
   print $ length finalSafe
   -- let decOnly = mapMaybe (\x -> ) goodRows
   print "done"
