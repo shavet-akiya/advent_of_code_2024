@@ -13,6 +13,7 @@ diffFinder (n1 : n2 : ns)
  | abs (n1 - n2) <= 3 && n1 /= n2 =  (n1 - n2) : (diffFinder (n2 : ns))
  | otherwise = [0]
 
+{-
 findSafe2 :: [Int] -> Maybe Int
 findSafe2 [] = Nothing
 findSafe2 xs
@@ -22,7 +23,7 @@ findSafe2 xs
  where
   onlyPos = filter (>0) xs
   onlyNeg = filter (<0) xs
-
+-}
 diffFinder2 :: [Int] -> Int -> Int -> [Int]
 diffFinder2 (x:y:z) b 0 = diffFinder2 (x:y:z) b (x - y)
 diffFinder2 [] _ _ = [0]
