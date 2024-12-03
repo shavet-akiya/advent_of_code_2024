@@ -9,9 +9,9 @@ findSafe xs
 -- findSafe (x:y:xs)
 
 diffFinder :: [Int] -> [Int]
-diffFinder [] d = d
-diffFinder [n] d = d
-diffFinder (n1 : n2 : ns) d = (n1 - n2) : (diffFinder (n2 : ns))
+diffFinder [] = []
+diffFinder [n] = [n]
+diffFinder (n1 : n2 : ns) = (n1 - n2) : (diffFinder (n2 : ns))
 
 main :: IO ()
 main = do
