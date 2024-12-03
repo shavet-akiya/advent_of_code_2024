@@ -15,7 +15,7 @@ diffFinder (n1 : n2 : ns)
 
 findSafe2 :: [Int] -> Maybe Int
 findSafe2 [] = Nothing
-findSafe xs
+findSafe2 xs
  | 0 elem xs = Nothing
  | all (>0) xs || all (<0) xs = Just $ 1
  | otherwise = Nothing
@@ -24,7 +24,7 @@ findSafe xs
   onlyNeg = filter (<0) xs
 
 diffFinder2 :: [Int] -> Int -> Int -> [Int]
-diffFinder (x:y:z) b 0 = diffFinder2 (x:y:z) b (x - y)
+diffFinder2 (x:y:z) b 0 = diffFinder2 (x:y:z) b (x - y)
 diffFinder2 [] _ _ = [0]
 diffFinder2 [n] _ _ = []
 diffFinder2 (n1 : n2 : ns) x s
