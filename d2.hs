@@ -17,7 +17,7 @@ main :: IO ()
 main = do
   text <- readFile "input_2_easy.txt"
   let allLines = lines text
-  let goodRows = fmap words allLines
+  let goodRows = fmap (fmap read . words) allLines
   let finalSafe = mapMaybe (findSafe . diffFinder) goodRows
   print $ length finalSafe
   -- let decOnly = mapMaybe (\x -> ) goodRows
