@@ -40,13 +40,13 @@ main = do
   text <- readFile "input_2_easy.txt"
   let allLines = lines text
   let goodRows = fmap (fmap read . words) allLines
-  let l1 = fmap (flip . flip diffFinder2 0 0) goodRows
+  let l1 = fmap (\x -> diffFinder2 x 0 0) goodRows
   let l2 = fmap findSafe l1
   print goodRows
   print l1
   print l2
   print "-----"
-  let finalSafe = mapMaybe (findSafe . (flip . flip diffFinder2 0 0)) goodRows
+  let finalSafe = mapMaybe (findSafe . (\x -> diffFinder2 x 0 0)) goodRows
   --print finalSafe
   print $ length finalSafe
   -- let decOnly = mapMaybe (\x -> ) goodRows
