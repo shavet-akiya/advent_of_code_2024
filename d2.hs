@@ -30,7 +30,7 @@ diffFinder2 [] _ _ = [0]
 diffFinder2 [n] _ _ = []
 diffFinder2 (n1 : n2 : ns) x s
  | sameChecker s diff && abs diff <= 3 && diff /= 0 =  diff : (diffFinder2 (n2 : ns) x diff)
- | x == 0 = diffFinder2 (n1 : ns) 1
+ | x == 0 = diffFinder2 (n1 : ns) 1 s
  | otherwise = [0]
  where
   diff = n1 - n2
@@ -38,7 +38,7 @@ diffFinder2 (n1 : n2 : ns) x s
  
 main :: IO ()
 main = do
-  text <- readFile "input_2_easy.txt"
+  text <- readFile "input_2.txt"
   let allLines = lines text
   let goodRows = fmap (fmap read . words) allLines
   let l1 = fmap (\x -> diffFinder2 x 0 0) goodRows
