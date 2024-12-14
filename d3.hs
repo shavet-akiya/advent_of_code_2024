@@ -15,7 +15,7 @@ pairser = do
 
 
 allPairser :: Parser[(Integer, Integer)]
-allPairser = many $ try skipMany (noneOf "mul(") *> pairser
+allPairser = many $ try (skipMany (noneOf "mul(") *> pairser)
 
 getPairs :: String -> Either ParseError [(Integer, Integer)]
 getPairs xs = parse allPairser "" xs
