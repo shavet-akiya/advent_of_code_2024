@@ -8,9 +8,9 @@ pairser :: Parser (Integer, Integer)
 pairser = do
   _ <- string "mul("
   x <- number
-  _ <- char ","
+  _ <- char ','
   y <- number
-  _ <- char ")"
+  _ <- char ')'
   return (x,y)
 
 
@@ -21,8 +21,8 @@ muller :: String -> Integer
 muller xs = 
   case parse allPairser "" xs of
     Right pairs = do
-      foldl (\(x,y) r -> x*y + r) 0 pairs
-    Left _ = 0
+      foldl (\r (x,y)-> x*y + r) 0 pairs
+    Left _ = -1
 
 main :: IO ()
 main = do
