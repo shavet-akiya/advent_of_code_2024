@@ -30,6 +30,7 @@ muller xs =
 main :: IO ()
 main = do
   text <- readFile "input_3_easy.txt"
+  print text
   print $ getPairs text
   print $ muller text
 
