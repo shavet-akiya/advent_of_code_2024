@@ -15,14 +15,14 @@ pairser = do
 
 
 allPairser :: Parser[(Integer, Integer)]
-allPairser = many $ skipMany (noneOf "m") *> pairser
+allPairser = many $ skipMany (noneOf 'm') *> pairser
 
 muller :: String -> Integer
 muller xs = 
   case parse allPairser "" xs of
-    Right pairs = do
+    Right pairs -> do
       foldl (\r (x,y)-> x*y + r) 0 pairs
-    Left _ = -1
+    Left _ -> -1
 
 main :: IO ()
 main = do
