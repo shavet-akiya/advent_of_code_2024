@@ -15,7 +15,7 @@ pairser = do
 
 
 allPairser :: Parser[(Integer, Integer)]
-allPairser = many $ skipMany (noneOf 'm') *> pairser
+allPairser = many $ skipMany (noneOf "m") *> pairser
 
 muller :: String -> Integer
 muller xs = 
