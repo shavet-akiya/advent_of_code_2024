@@ -17,6 +17,9 @@ pairser = do
 allPairser :: Parser[(Integer, Integer)]
 allPairser = many $ skipMany (noneOf "m") *> pairser
 
+getPairs :: String -> Either ParseError [(Integer, Integer)]
+getPairs xs = parse allPairser "" xs
+
 muller :: String -> Integer
 muller xs = 
   case parse allPairser "" xs of
@@ -27,5 +30,6 @@ muller xs =
 main :: IO ()
 main = do
   text <- readFile "input_3_easy.txt"
+  print $ getPairs text
   print $ muller text
 
